@@ -1,10 +1,14 @@
 version: '3'
 services:
-  web:
-    container_name: webapp-frontend
-    build: .
+  master:
+    container_name: ros-master
+    build:
+      context: ./master
     ports:
-      - "5000:5000"
-  # redis:
-  #   container_name: redis-backend
-  #   image: "redis:alpine"
+      - "11311:11311"
+  node:
+    container_name: ros-node
+    build:
+      context: ./node
+    ports:
+      - "11311:11311"
