@@ -1,14 +1,14 @@
 version: '3'
 services:
   master:
-    container_name: ros-master
+    # container_name: ros-master
     build:
       context: ./master
     ports:
       - "11311:11311"
   node:
-    container_name: ros-node
+    # container_name: ros-node
     build:
       context: ./node
-    ports:
-      - "11311:11311"
+    depends_on:
+      - master

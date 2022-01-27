@@ -3,7 +3,8 @@
 import sys
 import rosgraph
 
-if not rosgraph.is_master_online():
+#http://service-master:11311
+if not rosgraph.is_master_online(master_uri = master:11311):
     print("Waiting roscore ...")
     sys.exit(1)
 
