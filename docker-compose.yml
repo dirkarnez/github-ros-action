@@ -8,6 +8,9 @@ services:
       - "11311:11311"
   node:
     # container_name: ros-node
+    environment:
+      - ROS_MASTER_URI=http://master:11311
+      - ROS_HOSTNAME=node
     build:
       context: ./node
     depends_on:
