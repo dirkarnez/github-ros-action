@@ -2,18 +2,24 @@ version: '3'
 services:
   master:
     # container_name: ros-master
-    environment:
-      - ROS_MASTER_URI=http://master:11311
-      - ROS_HOSTNAME=node
     build:
       context: ./master
     ports:
       - "11311:11311"
-  node:
+  talker:
     # container_name: ros-node
     environment:
       - ROS_MASTER_URI=http://master:11311
-      - ROS_HOSTNAME=node
+      - ROS_HOSTNAME=talker
+    build:
+      context: ./node
+    depends_on:
+      - master
+  listener:
+    # container_name: ros-node
+    environment:
+      - ROS_MASTER_URI=http://master:11311
+      - ROS_HOSTNAME=listener
     build:
       context: ./node
     depends_on:
