@@ -3,7 +3,7 @@ services:
   master:
     # container_name: ros-master
     environment:
-      - ROS_MASTER_URI=http://master:11311
+      - ROS_MASTER_URI=http://localhost:11311
     build:
       context: ./master
     ports:
