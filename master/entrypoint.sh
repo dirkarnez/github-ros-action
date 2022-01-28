@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-set -u
+#set -u
 
 echo "==> Executing master image entrypoint ..."
 
