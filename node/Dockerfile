@@ -14,7 +14,7 @@ COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
 
 RUN chmod 755 /usr/local/bin/check-roscore.py &&\
     chmod 755 /usr/local/bin/entrypoint.sh &&\
-    chmod 755 /usr/local/bin/entrypoint.sh
+    chmod 755 /usr/local/bin/wait-for-it.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["bash"]
