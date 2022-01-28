@@ -13,7 +13,7 @@ services:
       - ROS_HOSTNAME=talker
     build:
       context: ./node
-    entrypoint: ["/usr/local/bin/entrypoint.sh", "rostopic", "pub", "-r 1", "chatter", "std_msgs/String", "Hello, world"]
+    entrypoint: ["/usr/local/bin/wait-for-it.sh", "master:11311", "--", "/usr/local/bin/entrypoint.sh", "rostopic", "pub", "-r 1", "chatter", "std_msgs/String", "Hello, world"]
     depends_on:
       - master
   listener:
@@ -23,6 +23,6 @@ services:
       - ROS_HOSTNAME=listener
     build:
       context: ./node
-    entrypoint: ["/usr/local/bin/entrypoint.sh", "rostopic", "echo", "chatter"]
+    entrypoint: ["/usr/local/bin/wait-for-it.sh", "master:11311", "--", "/usr/local/bin/entrypoint.sh", "rostopic", "echo", "chatter"]
     depends_on:
       - master
